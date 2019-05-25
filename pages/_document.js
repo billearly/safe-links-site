@@ -25,7 +25,12 @@ export default class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
+          enhanceApp: App => props => sheet.collectStyles(
+            <>
+              <GlobalStyle />
+              <App {...props} />
+            </>
+          )
         });
 
       const initialProps = await Document.getInitialProps(ctx);
@@ -53,7 +58,6 @@ export default class MyDocument extends Document {
         </Head>
 
         <body className="custom_class">
-          <GlobalStyle />
           <Main />
           <NextScript />
         </body>
