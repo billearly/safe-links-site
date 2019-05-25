@@ -28,7 +28,7 @@ app.prepare().then(() => {
         res.send(response.data);
       })
       .catch(function (error) {
-        res.send(error.response.data);
+        res.status(error.response.status).send(error.response.data);
       });
   });
 

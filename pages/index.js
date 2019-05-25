@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 import axios from 'axios';
-import { Header } from '../components';
-
-const Form = styled.form``;
-
-const Input = styled.input``;
+import { Header, SearchForm, SearchInput } from '../components';
 
 const Result = styled.p``;
 
@@ -17,7 +13,9 @@ export default class Home extends Component {
     this.state = {
       url: '',
       redirectLocation: '',
-      isRequesting: false
+      isRequesting: false,
+      isErrorResponse: false,
+      errorMessage: ''
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -36,23 +34,25 @@ export default class Home extends Component {
 
     this.setState({
       redirectLocation: '',
-      isRequesting: true
+      isRequesting: true,
+      isErrorResponse: false,
+      errorMessage: ''
     });
 
     const encodedUrl = encodeURIComponent(this.state.url);
 
     axios.get(`/api/v1/link/${encodedUrl}`)
       .then((response) => {
-        console.log(response.data.location);
         this.setState({
           redirectLocation: response.data.location,
           isRequesting: false
         });
       })
       .catch((error) => {
-        console.log(error);
         this.setState({
-          isRequesting: false
+          isRequesting: false,
+          isErrorResponse: true,
+          errorMessage: error.response.data.message
         });
       });
   }
@@ -66,21 +66,28 @@ export default class Home extends Component {
 
         <Header
           title='Safe Little Links'
-        />
+        >
+          <SearchForm handleSubmit={this.handleSubmit}>
+            <SearchInput
+              handleChange={this.handleChange}
+              value={this.state.url}
+              placeholder='Enter link'
+            />
+          </SearchForm>
+        </Header>
 
-        <Form onSubmit={this.handleSubmit}>
-          <Input
-            onChange={this.handleChange}
-            value={this.state.url}
-          />
-        </Form>
-
-        <Result>
-          {this.state.redirectLocation}
-        </Result>
+        {this.state.redirectLocation !== '' &&
+          <Result>
+            {this.state.url} === redirects to ==> {this.state.redirectLocation}
+          </Result>
+        }
 
         {this.state.isRequesting &&
           <p>Checking...</p>
+        }
+
+        {this.state.isErrorResponse &&
+          <p>🤔 whoops something went wrong: {this.state.errorMessage}</p>
         }
       </>
     );
