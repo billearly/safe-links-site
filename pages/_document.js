@@ -54,7 +54,7 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <link href="https://fonts.googleapis.com/css?family=Pacifico|Sacramento&display=swap" rel="stylesheet"/>
+          <link href="https://fonts.googleapis.com/css?family=Pacifico|Sacramento|Roboto&display=swap" rel="stylesheet"/>
         </Head>
 
         <body className="custom_class">

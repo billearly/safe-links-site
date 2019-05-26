@@ -6,9 +6,14 @@ const HeaderContainer = styled.div`
   background-color: #6bbce1;
   color: white;
   display: flex;
+  flex-direction: column;
   height: 20rem;
   justify-content: center;
   position: relative;
+
+  & p {
+    margin-top:  1rem;
+  }
 `;
 
 const Title = styled.h1`

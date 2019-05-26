@@ -67,11 +67,17 @@ export default class Home extends Component {
         <Header
           title='Safe Little Links'
         >
+          <p>Know where you're going before you get there</p>
+
           <SearchForm handleSubmit={this.handleSubmit}>
             <SearchInput
               handleChange={this.handleChange}
               value={this.state.url}
-              placeholder='Enter link'
+              placeholders={[
+                'https://bit.ly',
+                'https://tinyurl.com',
+                'https://goo.gl'
+              ]}
             />
           </SearchForm>
         </Header>
