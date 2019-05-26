@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import Head from 'next/head';
 import axios from 'axios';
 import { Header, SearchForm, SearchInput } from '../components';
-
-const Result = styled.p``;
+import { ContentSection } from '../components/layout';
 
 export default class Home extends Component {
   constructor(props) {
@@ -82,19 +81,19 @@ export default class Home extends Component {
           </SearchForm>
         </Header>
 
-        {this.state.redirectLocation !== '' &&
-          <Result>
-            {this.state.url} === redirects to ==> {this.state.redirectLocation}
-          </Result>
-        }
+        <ContentSection doublePadding={true}>
+          {this.state.redirectLocation !== '' &&
+            <p>{this.state.url} === redirects to ==> {this.state.redirectLocation}</p>
+          }
 
-        {this.state.isRequesting &&
-          <p>Checking...</p>
-        }
+          {this.state.isRequesting &&
+            <p>Checking...</p>
+          }
 
-        {this.state.isErrorResponse &&
-          <p>🤔 whoops something went wrong: {this.state.errorMessage}</p>
-        }
+          {this.state.isErrorResponse &&
+            <p>🤔 whoops something went wrong: {this.state.errorMessage}</p>
+          }
+        </ContentSection>
       </>
     );
   }
