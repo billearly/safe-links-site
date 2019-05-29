@@ -3,13 +3,12 @@ import styled from 'styled-components';
 
 const HeaderContainer = styled.div`
   align-items: center;
-  background-color: #6bbce1;
+  background-image: radial-gradient(#6bbce1 25%, #3ea2d0 80%);
   color: white;
   display: flex;
   flex-direction: column;
   height: 20rem;
   justify-content: center;
-  position: relative;
 
   & p {
     margin-top:  1rem;

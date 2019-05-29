@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 import axios from 'axios';
-import { Header, SearchForm, SearchInput } from '../components';
+import { Header, SearchForm, SearchInput, SearchResult } from '../components';
 import { ContentSection } from '../components/layout';
 
 export default class Home extends Component {
@@ -67,7 +67,9 @@ export default class Home extends Component {
           title='Safe Little Links'
         >
           <p>Know where you're going before you get there</p>
+        </Header>
 
+        <ContentSection>
           <SearchForm handleSubmit={this.handleSubmit}>
             <SearchInput
               handleChange={this.handleChange}
@@ -79,17 +81,14 @@ export default class Home extends Component {
               ]}
             />
           </SearchForm>
-        </Header>
 
-        <ContentSection doublePadding={true}>
-          {this.state.redirectLocation !== '' &&
-            <p>{this.state.url} === redirects to ==> {this.state.redirectLocation}</p>
-          }
+          <SearchResult
+            isSearching={this.state.isRequesting} 
+            redirectLocation={this.state.redirectLocation}
+          />
+        </ContentSection>
 
-          {this.state.isRequesting &&
-            <p>Checking...</p>
-          }
-
+        <ContentSection doublePadding={true} bgColor='#bce9fd'>
           {this.state.isErrorResponse &&
             <p>🤔 whoops something went wrong: {this.state.errorMessage}</p>
           }

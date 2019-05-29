@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledForm = styled.form`
-  bottom: 0;
+  left: 50%;
   position: absolute;
-  transform: translateY(50%);
+  top: 0;
+  transform: translate(-50%, -50%);
 `;
 
 export const SearchForm = ({
