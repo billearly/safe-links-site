@@ -17,7 +17,7 @@ const instance = axios.create({
 
 const port = process.env.PORT;
 
-app.prepare().then(() => {
+const createServer = () => {
   const server = express();
 
   server.get('/api/v1/link/:link', (req, res) => {
@@ -37,8 +37,18 @@ app.prepare().then(() => {
     return handle(req, res, parsedUrl);
   });
 
-  server.listen(port, (err) => {
+  return server;
+}
+
+if (process.env.IN_LAMBDA) {
+  module.exports = createServer();
+} else {
+  app.prepare().then(() => {
+    const server = createServer();
+
+    server.listen(port, (err) => {
       if (err) throw err;
       console.log(`> Ready on http://localhost:${port}`);
+    });
   });
-});
+}
