@@ -15,7 +15,8 @@ const StyledSearchResult = styled.div`
 
 export const SearchResult = ({
   isSearching,
-  redirectLocation
+  redirectLocation,
+  defaultCopy
 }) => {
   return (
     <SearchResultContainer>
@@ -30,7 +31,7 @@ export const SearchResult = ({
       }
 
       {!isSearching && !redirectLocation &&
-        <p>Results appear here</p>
+        <p>{defaultCopy}</p>
       }
     </SearchResultContainer>
   );

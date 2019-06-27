@@ -11,13 +11,14 @@ const HeaderContainer = styled.div`
   justify-content: center;
 
   & p {
+    font-size: 1.2rem;
     margin-top:  1rem;
   }
 `;
 
 const Title = styled.h1`
-  font-family: 'Sacramento', cursive;
-  font-size: 4rem;
+  font-family: 'Rancho', cursive;
+  font-size: 7rem;
   font-weight: normal;
   margin: 0;
 `;

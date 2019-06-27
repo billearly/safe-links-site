@@ -54,7 +54,7 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <link href="https://fonts.googleapis.com/css?family=Pacifico|Sacramento|Roboto&display=swap" rel="stylesheet"/>
+          <link href="https://fonts.googleapis.com/css?family=Rancho|Roboto|&display=swap" rel="stylesheet"/>
           <link rel="icon" href="/static/favicon.ico"></link>
         </Head>
 

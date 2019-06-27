@@ -72,11 +72,11 @@ export default class Home extends Component {
     return (
       <>
         <Head>
-          <title>Safe Little Links</title>
+          <title>Legit Little Links</title>
         </Head>
 
         <Header
-          title='Safe Little Links'
+          title='Legit Little Links'
         >
           <p>Know where you're going before you get there</p>
         </Header>
@@ -97,6 +97,7 @@ export default class Home extends Component {
           <SearchResult
             isSearching={this.state.isRequesting} 
             redirectLocation={this.state.redirectLocation}
+            defaultCopy="Submit a link to see where it goes"
           />
 
           {this.state.isErrorResponse &&

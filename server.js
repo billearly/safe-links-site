@@ -10,9 +10,9 @@ const handle = app.getRequestHandler();
 
 const axios = require('axios');
 const instance = axios.create({
-  baseURL: process.env.SAFELINKS_API_ENDPOINT,
-  timeout: process.env.SAFELINKS_API_TIMEOUT,
-  headers: {'x-api-key': process.env.SAFELINKS_API_KEY}
+  baseURL: process.env.LEGITLINKS_API_ENDPOINT,
+  timeout: process.env.LEGITLINKS_API_TIMEOUT,
+  headers: {'x-api-key': process.env.LEGITLINKS_API_KEY}
 });
 
 const port = process.env.PORT;
