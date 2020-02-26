@@ -2,7 +2,6 @@ const awsServerlessExpress = require('aws-serverless-express');
 const app = require('./server');
 
 const binaryMimeTypes = [
-  'application/gzip',
   'application/javascript',
   'application/json',
   'application/octet-stream',
@@ -13,6 +12,7 @@ const binaryMimeTypes = [
   'image/jpeg',
   'image/png',
   'image/svg+xml',
+  'image/x-icon',
   'text/comma-separated-values',
   'text/css',
   'text/html',
