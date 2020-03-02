@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const HeaderContainer = styled.div`
   align-items: center;
-  background-image: radial-gradient(#6bbce1 25%, #3ea2d0 80%);
   color: white;
   display: flex;
   flex-direction: column;
@@ -12,7 +11,15 @@ const HeaderContainer = styled.div`
 
   & p {
     font-size: 1.2rem;
-    margin-top:  1rem;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 55rem) {
+    text-align: center;
+
+    & p {
+      font-size: 1rem;
+    }
   }
 `;
 
@@ -21,6 +28,10 @@ const Title = styled.h1`
   font-size: 7rem;
   font-weight: normal;
   margin: 0;
+
+  @media (max-width: 55rem) {
+    font-size: 5rem;
+  }
 `;
 
 export const Header = ({ title, children }) => {

@@ -1,2 +1,2 @@
-export { ContentSection } from './ContentSection';
-export { SectionHeader } from './SectionHeader';
+export { Container } from './Container';
+export { Dyad } from './Dyad';
