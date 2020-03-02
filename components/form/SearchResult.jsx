@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Spinner } from './';
+import { Spinner } from './Spinner';
 
 const SearchResultContainer = styled.div`
   display: flex;
@@ -28,10 +28,6 @@ export const SearchResult = ({
         <StyledSearchResult>
           {redirectLocation}
         </StyledSearchResult>
-      }
-
-      {!isSearching && !redirectLocation &&
-        <p>{defaultCopy}</p>
       }
     </SearchResultContainer>
   );
