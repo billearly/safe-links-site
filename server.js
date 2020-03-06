@@ -7,13 +7,7 @@ const next = require('next');
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
-
-const axios = require('axios');
-const instance = axios.create({
-  baseURL: process.env.LEGITLINKS_API_ENDPOINT,
-  timeout: process.env.LEGITLINKS_API_TIMEOUT,
-  headers: {'x-api-key': process.env.LEGITLINKS_API_KEY}
-});
+const apiSource = require("./source/safe-links-api");
 
 const port = process.env.PORT;
 
@@ -21,13 +15,11 @@ const createServer = () => {
   const server = express();
 
   server.get('/api/v1/link/:link', (req, res) => {
-    var encodedUrl = encodeURIComponent(req.params.link);
-
-    instance.get(encodedUrl)
-      .then(function (response) {
-        res.send(response.data);
+    apiSource.getLinkLocation(req.params.link)
+      .then((response) => {
+        res.send(response);
       })
-      .catch(function (error) {
+      .catch((error) => {
         res.status(error.response.status).send(error.response.data);
       });
   });
