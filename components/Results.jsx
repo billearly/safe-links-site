@@ -23,10 +23,10 @@ export const Results = ({
   handleClose
 }) => {
   return (
-    <Dialog open={true} onClose={handleClose}>
-      <DialogTitle>{true ? "Checking..." : "Results"}</DialogTitle>
+    <Dialog open={isOpen} onClose={handleClose}>
+      <DialogTitle>{isRequesting ? "Checking..." : "Results"}</DialogTitle>
       <DialogContent>
-        {true &&
+        {isRequesting &&
           <SpinnerContainer>
             <Spinner />
           </SpinnerContainer>
