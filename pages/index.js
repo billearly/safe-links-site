@@ -6,14 +6,10 @@ import {
   SearchForm,
   SearchInput,
   SearchResult,
-  Link,
   Container,
-  Dyad
+  Dyad,
+  Results
 } from '../components';
-import {
-  ContentSection,
-  SectionHeader
-} from '../components/layout';
 
 export default class Home extends Component {
   constructor(props) {
@@ -22,6 +18,7 @@ export default class Home extends Component {
     this.state = {
       url: '',
       redirectLocation: '',
+      isResultsOpen: false,
       isRequesting: false,
       isErrorResponse: false,
       errorMessage: ''
@@ -29,6 +26,7 @@ export default class Home extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleResultClose = this.handleResultClose.bind(this);
   }
 
   handleChange(e) {
@@ -43,6 +41,7 @@ export default class Home extends Component {
 
     this.setState({
       redirectLocation: '',
+      isResultsOpen: true,
       isRequesting: true,
       isErrorResponse: false,
       errorMessage: ''
@@ -64,6 +63,12 @@ export default class Home extends Component {
           errorMessage: error.response.data.message
         });
       });
+  }
+
+  handleResultClose() {
+    this.setState({
+      isResultsOpen: false
+    });
   }
 
   render() {
@@ -96,15 +101,14 @@ export default class Home extends Component {
             </>
           </Dyad>
 
-          <SearchResult
-            isSearching={this.state.isRequesting}
+          <Results
+            isOpen={this.state.isResultsOpen}
+            isRequesting={this.state.isRequesting}
             redirectLocation={this.state.redirectLocation}
-            defaultCopy="Submit a link to see where it goes"
+            isErrorResponse={this.state.isErrorResponse}
+            errorMessage={this.state.errorMessage}
+            handleClose={this.handleResultClose}
           />
-
-          {this.state.isErrorResponse &&
-            <p>🤔 whoops something went wrong: {this.state.errorMessage}</p>
-          }
         </Container>
       </>
     );
