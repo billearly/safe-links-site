@@ -15,12 +15,11 @@ const SpinnerWrapper = styled.div`
   background-color: transparent;
   display: flex;
   justify-content: center;
-  position: absolute;
 `;
 
 const StyledSpinner = styled.div`
   animation: ${rotate} 1s linear infinite;
-  border: 0.5rem solid lightgray;
+  border: 0.2rem solid lightgray;
   border-top-color: darkgray;
   border-radius: 50%;
   height: 4rem;
