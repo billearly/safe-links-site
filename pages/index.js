@@ -5,7 +5,6 @@ import {
   Header,
   SearchForm,
   SearchInput,
-  SearchResult,
   Container,
   Dyad,
   Results

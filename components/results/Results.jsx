@@ -1,18 +1,10 @@
 import React from "react";
-import styled from "styled-components";
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Spinner } from "./";
-
-const SpinnerContainer = styled.div`
-  padding: 5rem 10rem;
-
-  @media (max-width: 55rem) {
-    padding: 2rem;
-  }
-`;
+import { Spinner } from "../";
+import "./Results.scss";
 
 export const Results = ({
   isOpen,
@@ -23,13 +15,15 @@ export const Results = ({
   handleClose
 }) => {
   return (
-    <Dialog open={isOpen} onClose={handleClose}>
+    <Dialog
+      open={isOpen}
+      onClose={handleClose}
+      className="results"
+    >
       <DialogTitle>{isRequesting ? "Checking..." : "Results"}</DialogTitle>
       <DialogContent>
         {isRequesting &&
-          <SpinnerContainer>
-            <Spinner />
-          </SpinnerContainer>
+          <Spinner />
         }
 
         {!isRequesting && redirectLocation &&

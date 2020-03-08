@@ -1,0 +1,11 @@
+@import "../variables";
+
+.results {
+  .spinner {
+    padding: 5rem 10rem;
+
+    @media (max-width: 55rem) {
+      padding: 2rem;
+    }
+  }
+}

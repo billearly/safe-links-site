@@ -1,0 +1,17 @@
+@import "../variables";
+
+.spinner {
+  align-items: center;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+
+  &__ring {
+    animation: $rotate;
+    border: $border;
+    border-top-color: darkgray;
+    border-radius: 50%;
+    height: 4rem;
+    width: 4rem;
+  }
+}

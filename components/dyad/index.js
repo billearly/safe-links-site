@@ -1,0 +1,1 @@
+export { Dyad } from './Dyad';
