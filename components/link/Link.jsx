@@ -1,8 +1,5 @@
-import styled from 'styled-components';
-
-export const StyledLink = styled.a`
-  color: #4c4c4c;
-`;
+import React from "react";
+import "./Link.scss";
 
 export const Link = ({
   href,
@@ -10,12 +7,13 @@ export const Link = ({
   children
 }) => {
   return (
-    <StyledLink
+    <a
+      className="link"
       href={href}
       target={isExternal && '_blank'}
       rel={isExternal && 'noopener noreferrer'}
     >
       {children}
-    </StyledLink>
+    </a>
   );
 }

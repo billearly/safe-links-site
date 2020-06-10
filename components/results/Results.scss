@@ -1,0 +1,35 @@
+@import "../variables";
+
+.results {
+  max-width: 25rem;
+
+  .spinner {
+    padding: 5rem 10rem;
+
+    @media (max-width: 55rem) {
+      padding: 2rem;
+    }
+  }
+
+  .results-section {
+    padding: 1rem;
+
+    &--secondary {
+      background-color: $color-gray;
+    }
+
+    &--tertiary {
+      background-color: $color-red;
+      color: white;
+    }
+
+    h4 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    a, a:visited {
+      color: $color-blue;
+    }
+  }
+}

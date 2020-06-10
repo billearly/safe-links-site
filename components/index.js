@@ -1,6 +1,8 @@
-export { Header } from './Header';
-export { Link } from './Link';
-export { Results } from "./Results";
-export { Spinner } from "./Spinner";
+export { Header } from './header';
+export { Link } from './link';
+export { Results } from "./results";
+export { Spinner } from "./spinner";
 export { SearchForm, SearchInput } from "./form";
-export { Container, Dyad } from "./layout";
+export { Container } from "./container";
+export { Dyad } from "./dyad";
+export { TextToken } from "./text-token";

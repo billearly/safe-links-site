@@ -5,7 +5,6 @@ import {
   Header,
   SearchForm,
   SearchInput,
-  SearchResult,
   Container,
   Dyad,
   Results
@@ -17,7 +16,7 @@ export default class Home extends Component {
 
     this.state = {
       url: '',
-      redirectLocation: '',
+      linkInfo: null,
       isResultsOpen: false,
       isRequesting: false,
       isErrorResponse: false,
@@ -40,7 +39,7 @@ export default class Home extends Component {
     // verify its a url before making the request
 
     this.setState({
-      redirectLocation: '',
+      linkInfo: null,
       isResultsOpen: true,
       isRequesting: true,
       isErrorResponse: false,
@@ -52,7 +51,7 @@ export default class Home extends Component {
     axios.get(`/api/v1/link/${encodedUrl}`)
       .then((response) => {
         this.setState({
-          redirectLocation: response.data.location,
+          linkInfo: response.data,
           isRequesting: false
         });
       })
@@ -104,7 +103,7 @@ export default class Home extends Component {
           <Results
             isOpen={this.state.isResultsOpen}
             isRequesting={this.state.isRequesting}
-            redirectLocation={this.state.redirectLocation}
+            linkInfo={this.state.linkInfo}
             isErrorResponse={this.state.isErrorResponse}
             errorMessage={this.state.errorMessage}
             handleClose={this.handleResultClose}

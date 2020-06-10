@@ -1,14 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-
-const StyledInput = styled.input`
-  border: none;
-  border-radius: 0.25rem;
-  box-shadow: #00000054 0px 0.06em 0.75em;
-  font-size: 1rem;
-  padding: 1.25rem;
-  width: 20rem;
-`;
+import "./SearchInput.scss";
 
 export class SearchInput extends Component {
   constructor(props) {
@@ -26,7 +17,7 @@ export class SearchInput extends Component {
     this.rotatePlaceholder(props.placeholders);
   }
 
-  rotatePlaceholder (placeholders) {
+  rotatePlaceholder(placeholders) {
     if (placeholders && placeholders.length > 1) {
       setInterval(() => {
         const updatedIndex = this.state.placeholderIndex < placeholders.length - 1
@@ -48,7 +39,8 @@ export class SearchInput extends Component {
     } = this.props;
 
     return (
-      <StyledInput
+      <input
+        className="search-input"
         onChange={handleChange}
         value={value}
         placeholder={this.state.placeholder}

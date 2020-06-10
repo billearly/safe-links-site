@@ -1,0 +1,17 @@
+@import "../variables";
+
+.dyad {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+
+  @media (max-width: 55rem) {
+    flex-direction: column;
+  }
+
+  &__item {
+    max-width: 30rem;
+    padding: 0 2rem;
+  }
+}

@@ -1,0 +1,17 @@
+
+$border: 0.2rem solid lightgray;
+
+$color-blue: #80b0b9;
+$color-gray: #e5e5e5;
+$color-red: #b98080;
+
+$rotate: rotate 1s linear infinite;
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
