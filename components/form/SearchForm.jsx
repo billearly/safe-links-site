@@ -1,11 +1,15 @@
 import React from 'react';
+import "./SearchForm.scss";
 
 export const SearchForm = ({
   handleSubmit,
   children
 }) => {
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      className="search-form"
+      onSubmit={handleSubmit}
+    >
       {children}
     </form>
   );

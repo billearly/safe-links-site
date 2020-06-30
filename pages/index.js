@@ -5,6 +5,7 @@ import {
   Header,
   SearchForm,
   SearchInput,
+  SearchButton,
   Container,
   Dyad,
   Results
@@ -96,6 +97,8 @@ export default class Home extends Component {
                     'https://goo.gl'
                   ]}
                 />
+
+                <SearchButton />
               </SearchForm>
             </>
           </Dyad>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./SearchInput.scss";
+import { SearchButton } from "./SearchButton";
 
 export class SearchInput extends Component {
   constructor(props) {
@@ -40,7 +40,6 @@ export class SearchInput extends Component {
 
     return (
       <input
-        className="search-input"
         onChange={handleChange}
         value={value}
         placeholder={this.state.placeholder}
