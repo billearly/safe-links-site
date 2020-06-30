@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { SearchButton } from "./SearchButton";
 
 export class SearchInput extends Component {
   constructor(props) {
