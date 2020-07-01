@@ -13,5 +13,9 @@
   &__item {
     max-width: 30rem;
     padding: 0 2rem;
+
+    @media (max-width: 55rem) {
+      padding: 0;
+    }  
   }
 }
