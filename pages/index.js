@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import axios from 'axios';
 import {
@@ -11,108 +11,88 @@ import {
   Results
 } from '../components';
 
-export default class Home extends Component {
-  constructor(props) {
-    super(props);
+const Home = () => {
+  const [url, setUrl] = useState("");
+  const [linkInfo, setLinkInfo] = useState(null);
+  const [isResultsOpen, setIsResultsOpen] = useState(false);
+  const [isRequesting, setIsRequesting] = useState(false);
+  const [isErrorResponse, setIsErrorResponse] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-    this.state = {
-      url: '',
-      linkInfo: null,
-      isResultsOpen: false,
-      isRequesting: false,
-      isErrorResponse: false,
-      errorMessage: ''
-    }
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleResultClose = this.handleResultClose.bind(this);
+  const handleChange = (e) => {
+    setUrl(e.target.value);
   }
 
-  handleChange(e) {
-    this.setState({
-      url: e.target.value
-    });
-  }
-
-  handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // verify its a url before making the request
 
-    this.setState({
-      linkInfo: null,
-      isResultsOpen: true,
-      isRequesting: true,
-      isErrorResponse: false,
-      errorMessage: ''
-    });
+    setLinkInfo(null);
+    setIsResultsOpen(true);
+    setIsRequesting(true);
+    setIsErrorResponse(false);
+    setErrorMessage("");
 
-    const encodedUrl = encodeURIComponent(this.state.url);
+    const encodedUrl = encodeURIComponent(url);
 
     axios.get(`/api/v1/link/${encodedUrl}`)
       .then((response) => {
-        this.setState({
-          linkInfo: response.data,
-          isRequesting: false
-        });
+        setLinkInfo(response.data);
+        setIsRequesting(false);
       })
       .catch((error) => {
-        this.setState({
-          isRequesting: false,
-          isErrorResponse: true,
-          errorMessage: error.response.data.message
-        });
+        setIsRequesting(false);
+        setIsErrorResponse(true);
+        setErrorMessage(error.response.data.message);
       });
   }
 
-  handleResultClose() {
-    this.setState({
-      isResultsOpen: false
-    });
+  const handleResultClose = () => {
+    setIsResultsOpen(false);
   }
 
-  render() {
-    return (
-      <>
-        <Head>
-          <title>Legit Links</title>
-        </Head>
+  return (
+    <>
+      <Head>
+        <title>Legit Links</title>
+      </Head>
 
-        <Container>
-          <Dyad>
-            <Header
-              title='Legit Links'
-            >
-              <p>Know where you're going before you get there</p>
-            </Header>
+      <Container>
+        <Dyad>
+          <Header
+            title='Legit Links'
+          >
+            <p>Know where you're going before you get there</p>
+          </Header>
 
-            <>
-              <SearchForm handleSubmit={this.handleSubmit}>
-                <SearchInput
-                  handleChange={this.handleChange}
-                  value={this.state.url}
-                  placeholders={[
-                    'https://bit.ly',
-                    'https://tinyurl.com',
-                    'https://goo.gl'
-                  ]}
-                />
+          <>
+            <SearchForm handleSubmit={handleSubmit}>
+              <SearchInput
+                handleChange={handleChange}
+                value={url}
+                placeholders={[
+                  'https://bit.ly',
+                  'https://tinyurl.com',
+                  'https://goo.gl'
+                ]}
+              />
 
-                <SearchButton />
-              </SearchForm>
-            </>
-          </Dyad>
+              <SearchButton />
+            </SearchForm>
+          </>
+        </Dyad>
 
-          <Results
-            isOpen={this.state.isResultsOpen}
-            isRequesting={this.state.isRequesting}
-            linkInfo={this.state.linkInfo}
-            isErrorResponse={this.state.isErrorResponse}
-            errorMessage={this.state.errorMessage}
-            handleClose={this.handleResultClose}
-          />
-        </Container>
-      </>
-    );
-  }
+        <Results
+          isOpen={isResultsOpen}
+          isRequesting={isRequesting}
+          linkInfo={linkInfo}
+          isErrorResponse={isErrorResponse}
+          errorMessage={errorMessage}
+          handleClose={handleResultClose}
+        />
+      </Container>
+    </>
+  );
 }
+
+export default Home;
