@@ -12,7 +12,7 @@
     width: 20rem;
   }
 
-  button {
+  .submit-button {
     background-color: unset;
     border: none;
     border-radius: 0.2rem;
@@ -22,5 +22,9 @@
     position: absolute;
     right: 0.5rem;
     top: 0.5rem;
+
+    &--disabled {
+      color: $color-gray;
+    }
   }
 }
