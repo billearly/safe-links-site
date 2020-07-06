@@ -25,7 +25,10 @@ const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // verify its a url before making the request
+
+    if (!url.trim()) {
+      return;
+    }
 
     setLinkInfo(null);
     setIsResultsOpen(true);
@@ -77,7 +80,9 @@ const Home = () => {
                 ]}
               />
 
-              <SearchButton />
+              <SearchButton
+                isDisabled={!url.trim()}
+              />
             </SearchForm>
           </>
         </Dyad>
