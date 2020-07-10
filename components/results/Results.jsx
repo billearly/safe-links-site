@@ -26,6 +26,26 @@ export const Results = ({
     reportLink
   } = service || {};
 
+  const getResponseMessage = () => {
+    // Success
+    if (responseCode >= 200 && responseCode < 300) {
+      return <p>This link does not redirect</p>;
+    }
+
+    // Redirect
+    if (responseCode >= 300 && responseCode < 400) {
+      return <p>This link redirects to <TextToken type="warning">{location}</TextToken></p>;
+    }
+
+    // Error
+    if (responseCode >= 400) {
+      return <p>This link responded with an error code: <TextToken type="warning">{responseCode}</TextToken></p>;
+    }
+
+    // Default
+    return <p>This link responded with an unknown code: <TextToken type="warning">{responseCode}</TextToken></p>;
+  }
+
   return (
     <Dialog
       open={isOpen}
@@ -45,11 +65,7 @@ export const Results = ({
 
             <ResultsSection sectionType='primary'>
               <h4>Destination</h4>
-
-              {location
-                ? <TextToken type="warning">{location}</TextToken>
-                : <p>This link doesn't redirect</p>
-              }
+              {getResponseMessage()}
             </ResultsSection>
 
             {type &&
