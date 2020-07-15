@@ -6,3 +6,5 @@ export { SearchForm, SearchInput, SearchButton } from "./form";
 export { Container } from "./container";
 export { Dyad } from "./dyad";
 export { TextToken } from "./text-token";
+export { TransparentButton } from "./transparent-button";
+export { ContentBlockNarrow } from "./content-block";

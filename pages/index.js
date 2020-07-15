@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Drawer from "@material-ui/core/Drawer";
+import { Info, X } from "react-feather";
 import Head from 'next/head';
 import axios from 'axios';
 import {
@@ -8,7 +10,9 @@ import {
   SearchButton,
   Container,
   Dyad,
-  Results
+  Results,
+  TransparentButton,
+  ContentBlockNarrow
 } from '../components';
 
 const Home = () => {
@@ -18,6 +22,7 @@ const Home = () => {
   const [isRequesting, setIsRequesting] = useState(false);
   const [isErrorResponse, setIsErrorResponse] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const handleChange = (e) => {
     setUrl(e.target.value);
@@ -52,6 +57,10 @@ const Home = () => {
 
   const handleResultClose = () => {
     setIsResultsOpen(false);
+  }
+
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
   }
 
   return (
@@ -95,7 +104,47 @@ const Home = () => {
           errorMessage={errorMessage}
           handleClose={handleResultClose}
         />
+
+        <TransparentButton
+          onClick={toggleDrawer}
+          style={{
+            position: "fixed",
+            right: "0.5rem",
+            bottom: "0.5rem",
+            color: "white"
+          }}
+        >
+          <Info />
+        </TransparentButton>
       </Container>
+
+      <Drawer
+        open={isDrawerOpen}
+        onClose={toggleDrawer}
+        anchor="right"
+      >
+        <ContentBlockNarrow>
+          <h3>Is this link legit?</h3>
+
+          <p>Have you found a link on the internet and you want to know where it goes before you click on it?</p>
+          <p>Put the link in the search box and this site will let you know if the link redirects</p>
+
+          <h4>What is a redirect?</h4>
+          <p>Sometimes links on the internet send you somewhere other than where they say they will. This is called a redirect.</p>
+          <p>For example, <a href="https://bit.ly/IFHzvO">https://bit.ly/IFHzvO</a> will actually send you to google.com. Try it out!</p>
+
+          <TransparentButton
+            onClick={toggleDrawer}
+            style={{
+              position: "absolute",
+              right: "0.5rem",
+              bottom: "0.5rem"
+            }}
+          >
+            <X />
+          </TransparentButton>
+        </ContentBlockNarrow>
+      </Drawer>
     </>
   );
 }
