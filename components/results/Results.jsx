@@ -34,7 +34,7 @@ export const Results = ({
 
     // Redirect
     if (responseCode >= 300 && responseCode < 400) {
-      return <p>This link redirects to <TextToken type="warning">{location}</TextToken></p>;
+      return <TextToken type="warning">{location}</TextToken>;
     }
 
     // Error
