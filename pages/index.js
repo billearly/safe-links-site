@@ -12,7 +12,8 @@ import {
   Dyad,
   Results,
   TransparentButton,
-  ContentBlockNarrow
+  ContentBlockNarrow,
+  Link
 } from '../components';
 
 const Home = () => {
@@ -131,7 +132,7 @@ const Home = () => {
 
           <h4>What is a redirect?</h4>
           <p>Sometimes links on the internet send you somewhere other than where they say they will. This is called a redirect.</p>
-          <p>For example, <a href="https://bit.ly/IFHzvO">https://bit.ly/IFHzvO</a> will actually send you to google.com. Try it out!</p>
+          <p>For example, <Link href="https://bit.ly/IFHzvO" isExternal={true}>https://bit.ly/IFHzvO</Link> will actually send you to google.com. Try it out!</p>
 
           <TransparentButton
             onClick={toggleDrawer}
