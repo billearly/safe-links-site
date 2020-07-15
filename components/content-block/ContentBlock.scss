@@ -1,0 +1,24 @@
+.content-block-narrow {
+  padding: 1rem;
+  width: 20rem;
+
+  img {
+    display: block;
+    margin: 0 auto;
+    width: 8rem;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+
+  p {
+    margin: 1rem 0;
+  }
+
+  button {
+    bottom: 0;
+    position: absolute;
+    right: 0;
+  }
+}

@@ -1,0 +1,1 @@
+export { ContentBlockNarrow } from "./ContentBlockNarrow";
