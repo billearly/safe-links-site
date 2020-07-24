@@ -19,6 +19,7 @@ Goals:
 
 If I had more time, things I would add:
 * Automated deployments. Right now its a manual zip and upload
+* This needs some unit tests
 
 If I could do it over again, things I would change:
 * I would use Typescript from the beginning.
